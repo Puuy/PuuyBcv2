@@ -538,7 +538,7 @@ number1++
                                             
                                           });
                         
-client.on("message", message => {
+client2.on("message", message => {
   let args = message.content
     .split(" ")
     .slice(1)
@@ -566,7 +566,7 @@ client.on("message", message => {
   }
 });
                                           
-client.on("message", message => {
+client2.on("message", message => {
   let args = message.content
     .split(" ")
     .slice(1)

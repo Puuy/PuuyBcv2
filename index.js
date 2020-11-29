@@ -538,9 +538,63 @@ number1++
                                             
                                           });
                         
-
+client.on("message", message => {
+  let args = message.content
+    .split(" ")
+    .slice(1)
+    .join(" ");
+  if (message.content.startsWith(prefix + "setavatar1")) {
+    if (!xv.includes(message.author.id))
+      return message.reply("**:x:  لعمك بويي فقط **");
+    message.delete();
+    let embed = new Discord.RichEmbed()
+      .setColor(`RANDOM`)
+      .setDescription(`**! ضع رابط الصورة لتغير الصورة**`)
+      .addField(`**${prefix}setavatar [Avatar Link]**`, `${message.author}`)
+      .setFooter(`${message.author.tag}`, `${message.author.avatarURL}`)
+      .setTimestamp()
+      .setThumbnail(message.author.avatarURL);
+    if (!args) return message.channel.sendEmbed(embed);
+    client.user.setAvatar(`${args}`);
+    const avatar = new Discord.RichEmbed()
+      .setColor("RANDOM")
+      .setDescription(`**! تـم تـغـيـر الـصـورة**`)
+      .addField(`**By :**`, `**${message.author}**`)
+      .setFooter(`${message.author.tag}`, `${message.author.avatarURL}`)
+      .setTimestamp();
+    message.channel.sendEmbed(avatar);
+  }
+});
                                           
+client.on("message", message => {
+  let args = message.content
+    .split(" ")
+    .slice(1)
+    .join(" ");
+  if (message.content.startsWith(prefix + "setname1")) {
+    if (!xv.includes(message.author.id))
+      return message.reply("**:x: لعمك بووي فقط**");
+    message.delete();
+    let embed = new Discord.RichEmbed()
+      .setColor(`RANDOM`)
+      .setDescription(`**! اكتب اسم لتغير الاسم القديم**`)
+      .addField(`**${prefix}setname [New Name]**`, `${message.author}`)
+      .setFooter(`${message.author.tag}`, `${message.author.avatarURL}`)
+      .setTimestamp()
+      .setThumbnail(message.author.avatarURL);
+    if (!args) return message.channel.sendEmbed(embed);
+    client.user.setUsername(`${args}`);
+    const name = new Discord.RichEmbed()
+      .setColor("RANDOM")
+      .setDescription(`**! تـم تـغـيـر الأسـم الـي : ${args}**`)
+      .addField(`**By :**`, `**${message.author}**`)
+      .setFooter(`${message.author.tag}`, `${message.author.avatarURL}`)
+      .setTimestamp();
+    message.channel.sendEmbed(name);
+  }
+});
 
+let xv = ["455108784579149835", ""]
 
 
 
